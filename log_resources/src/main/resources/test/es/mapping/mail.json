@@ -1,0 +1,32 @@
+{
+  "_source": {
+    "enabled": true
+  },
+  "properties": {
+    "imei":{"type": "keyword"},
+    "imsi":{"type": "keyword"},
+    "longitude":{"type": "double"},
+    "latitude":{"type": "double"},
+    "phone_mac":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "device_mac":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "device_number":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "collect_time":{"type": "long"},
+
+    "send_mail":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "send_time":{"type": "long"},
+    "accept_mail":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "accept_time":{"type": "long"},
+    "mail_content":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "mail_type":{"type": "keyword"},
+
+     "id":{"type": "keyword"},
+    "table":{"type": "keyword"},
+    "filename":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}},
+    "absolute_filename":{"type": "text","fields": {"keyword": {"ignore_above": 256,"type": "keyword"}}}
+  }
+}
+
+#index属性的取值有三个:
+analyzed:字段被索引，会做分词，可搜索。反过来，如果需要根据某个字段进搜索，index属性就应该设置为analyzed。
+not_analyzed：字段值不分词，会被原样写入索引。反过来，如果某些字段需要完全匹配，比如人名、地名，index属性设置为not_analyzed为佳。
+no:字段不写入索引，当然也就不能搜索。反过来，有些业务要求某些字段不能被搜索，那么index属性设置为no即可。
